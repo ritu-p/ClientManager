@@ -16,5 +16,6 @@ namespace CrossOverClientManagerEntities
          DbSet<Command> Commands { get; set; }
          DbSet<CommandClientMapper> CommandClientMapper { get; set; }
          DbSet<CommandOutput> CommandOutputs { get; set; }
+         int SaveChanges();
     }
 }

@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CrossoverClientManagerServer.Models;
 using CrossOverClientManagerEntities.Model;
 
 namespace CrossoverClientManagerServer.Repository.Implementation
 {
-    interface IClientRepository
+  public  interface IClientRepository
     {
-        void Add(Client b);
-        void Edit(Client b);
+        Task<bool> Add(ClientResponse b);
+        void Edit(ClientResponse b);
         void Remove(int Id);
-        IEnumerable<Client> GetClients();
-        Client FindById(int Id);
+        Task<IEnumerable<ClientResponse>> GetClients();
+        Task<IEnumerable<OSType>> GetOSType();
+        ClientResponse FindById(int Id);
+
     }
 }

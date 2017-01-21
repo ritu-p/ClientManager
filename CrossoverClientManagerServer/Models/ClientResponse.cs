@@ -11,8 +11,8 @@ namespace CrossoverClientManagerServer.Models
     public class ClientResponse
     {
 
-        [JsonProperty("client_id")]
-        public int ClientId { get; set; }
+       // [JsonProperty("client_id")]
+       // public int ClientId { get; set; }
 
         [JsonProperty("MachineName")]
         public string MachineName { get; set; }
@@ -33,7 +33,7 @@ namespace CrossoverClientManagerServer.Models
            return client;
        }
 
-        public bool validate(List<OSType> os,out String errorString)
+        public bool Validate(List<OSType> os,out String errorString)
         {
             errorString = null;
             if (!ValidateIPv4(IPAddresse))

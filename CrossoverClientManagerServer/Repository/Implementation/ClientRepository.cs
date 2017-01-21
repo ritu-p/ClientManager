@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using CrossoverClientManagerServer.Models;
 using CrossOverClientManagerEntities;
+using CrossOverClientManagerEntities.Model;
 
 namespace CrossoverClientManagerServer.Repository.Implementation
 {
@@ -13,17 +15,24 @@ namespace CrossoverClientManagerServer.Repository.Implementation
     {
 
         private IClientManagerContext context;
+        static List<OSType> osTypes;
 
-        public ClientRepository(IClientManagerContext bookContext)
+        public  ClientRepository(IClientManagerContext clientContext)
         {
-            context = bookContext; 
+            context = clientContext; 
+        
         }
-        public void Add(ClientResponse b)
+        public async Task<bool> Add(ClientResponse clientResponse)
         {
-            throw new NotImplementedException();
+               
+           Client client=  clientResponse.ToClientObject();
+            context.Clients.AddOrUpdate(key=>key.ID,client);
+            context.SaveChanges();
+            return true;
+
         }
 
-        public void Edit(ClientResponse b)
+        public void Edit(ClientResponse clientResponse)
         {
             throw new NotImplementedException();
         }
@@ -61,9 +70,9 @@ namespace CrossoverClientManagerServer.Repository.Implementation
         }
 
 
-        public IEnumerable<CrossOverClientManagerEntities.Model.OSType> GetOSType()
+        public async Task<IEnumerable<CrossOverClientManagerEntities.Model.OSType>> GetOSType()
         {
-            throw new NotImplementedException();
+            return await context.OS.ToListAsync();
         }
     }
 }

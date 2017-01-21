@@ -35,10 +35,22 @@ namespace CrossoverClientManagerServer.Controllers
         {
             return "value";
         }
-
+        [HttpPost]
         // POST api/values
-        public void Post([FromBody]string value)
+        public async Task<IHttpActionResult> Post([FromBody]ClientResponse client)
         {
+            String errorString;
+            var osEnum=await clientRepository.GetOSType();
+            osList = osEnum.ToList();
+           bool validationResult= client.Validate(osList, out errorString);
+            if(validationResult)
+            {
+              await   clientRepository.Add(client);
+              return Ok(true);
+            }
+
+            return InternalServerError(new Exception(errorString));
+
         }
 
         // PUT api/values/5
