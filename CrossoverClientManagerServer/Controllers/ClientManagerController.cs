@@ -16,7 +16,7 @@ namespace CrossoverClientManagerServer.Controllers
     {
         private IClientRepository clientRepository;
  //TODO remove this but load it only once;
-        private static List<OSType> osList;
+
         public ClientManagerController(IClientRepository repository)
         {
             clientRepository = repository;
@@ -41,8 +41,8 @@ namespace CrossoverClientManagerServer.Controllers
         {
             String errorString;
             var osEnum=await clientRepository.GetOSType();
-            osList = osEnum.ToList();
-           bool validationResult= client.Validate(osList, out errorString);
+            var osList = osEnum.ToList();
+            bool validationResult= client.Validate(osList, out errorString);
             if(validationResult)
             {
               await   clientRepository.Add(client);

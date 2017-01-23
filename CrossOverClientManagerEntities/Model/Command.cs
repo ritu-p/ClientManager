@@ -12,7 +12,9 @@ namespace CrossOverClientManagerEntities.Model
         [Key]
         public int CommandID { get; set; }
         public string CommandString { get; set; }
+        public int OSID { get; set; }
         public string Parameters { get; set; }
+        public virtual OSType OSType { get; set; }
 
     }
 }

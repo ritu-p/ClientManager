@@ -13,6 +13,7 @@ namespace CrossOverClientManagerEntities.Model
         public int ID { get; set; }
         public string Frequency { get; set; }
         public DateTime ScheduledTime { get; set; }
+        public bool ExecutionStatus { get; set; }
 
         public virtual Command Command { get; set; }
         public virtual Client Client { get; set; }

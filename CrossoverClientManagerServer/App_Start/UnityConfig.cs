@@ -18,6 +18,7 @@ namespace CrossoverClientManagerServer.App_Start
 
             //Dependency Resolution
             container.RegisterType<IClientRepository, ClientRepository>();
+            container.RegisterType<ICommandRepository, CommandRepository>();
             container.RegisterType<IClientManagerContext, ClientManagerContext>();
 
             configuration.DependencyResolver = new UnityDependencyResolver(container);      

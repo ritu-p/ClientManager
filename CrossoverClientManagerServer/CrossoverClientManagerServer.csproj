@@ -175,12 +175,15 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ClientManagerController.cs" />
+    <Compile Include="Controllers\CommandController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClientResponse.cs" />
+    <Compile Include="Models\CommandResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Implementation\ClientRepository.cs" />
+    <Compile Include="Repository\Implementation\CommandRepository.cs" />
     <Compile Include="Repository\Interfaces\IClientRepository.cs" />
     <Compile Include="Repository\Interfaces\ICommandRepository.cs" />
   </ItemGroup>
@@ -205,6 +208,9 @@
       <Project>{ce8ade7b-a6a9-4241-8ef6-b07d4004a782}</Project>
       <Name>CrossOverClientManagerEntities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\webdeploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
